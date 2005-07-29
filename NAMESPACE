@@ -3,6 +3,7 @@ lyap,
 lyap_k, 
 C2, 
 mutual, 
+plot.ami,
 embedd, 
 sim.cont, 
 lorenz.syst, 
@@ -10,7 +11,11 @@ rossler.syst,
 duffing.syst, 
 stplot, 
 d2, 
+plot.d2,
+print.d2,
 recurr,
-false.nearest)
+false.nearest,
+print.false.nearest,
+plot.false.nearest)
 
 useDynLib(tseriesChaos)

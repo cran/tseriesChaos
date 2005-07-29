@@ -1,6 +1,6 @@
 \name{tseriesChaos-internal}
 \title{Internal tseriesChaos objects}
-\alias{find_nearest}
+\alias{find_knearests}
 \alias{follow_points}
 \alias{.Traceback}
 \description{Internal tseriesChaos objects.}

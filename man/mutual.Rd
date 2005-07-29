@@ -1,27 +1,28 @@
 \name{mutual}
 \alias{mutual}
-\title{Mutual information index}
+\title{Average Mutual Information}
 \description{
-Estimates the mutual information index a given time series for a specified number of lags
+Estimates the average mutual information index (ami) of a given time series for a specified number of lags
 }
 \usage{
-mutual(series, partitions = 16, lag.max = 20)
+mutual(series, partitions = 16, lag.max = 20, plot=TRUE)
 }
 
 \arguments{
   \item{series}{time series}
   \item{partitions}{number of bins}
   \item{lag.max}{largest lag}
+  \item{plot}{logical. If 'TRUE' (the default) the ami is plotted}
 }
 \details{
-Estimates the mutual information index for a specified lag.
+Estimates the mutual information index for a specified number of lags.
 The joint probability distribution function is estimated with a simple bi-dimensional density histogram.
 }
 \value{
-The estimated mutual information index for each lag between 0 and \code{lag.max}.
+An object of class "ami", which is a vector containing the estimated mutual information index for each lag between 0 and \code{lag.max}.
 }
 \examples{
-plot(0:20, mutual(lorenz.ts), type="b", xlab="lag", ylab="I", main="Mutual information Index", sub="Lorenz simulated time series")
+mutual(lorenz.ts)
 }
 \references{
 Hegger, R., Kantz, H., Schreiber, T., Practical implementation of nonlinear time series methods: The TISEAN package; CHAOS 9, 413-435 (1999)

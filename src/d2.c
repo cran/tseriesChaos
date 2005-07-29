@@ -2,6 +2,16 @@
 
 #define output(i,j) out[(j)+(i)*neps]
 
+/*
+Sample correlation integral for multiple length scales and multiple embedding dimensions.
+in_series: input time series
+in_length: time series length
+in_m, in_d, in_t: max embedding dimension, time delay and theiler window
+in_neps: number of length scales to evaluate
+in_epsM: max length scale
+in_epsm: min length scale
+out: matrix of results
+*/
 void d2(double *in_series, int *in_length, int *in_m, int *in_d, int *in_t, int *in_neps, double *in_epsM, double *in_epsm, double *out){
 	double tmpd, **hist;
 	int i,j,w;
@@ -9,6 +19,9 @@ void d2(double *in_series, int *in_length, int *in_m, int *in_d, int *in_t, int 
 	double *series, epsM, epsm;
 	double a, lepsM;
 
+/*
+BIND PARAMETERS
+*/
 	series = in_series;
 	length = *in_length;
 	m = *in_m;
@@ -17,6 +30,10 @@ void d2(double *in_series, int *in_length, int *in_m, int *in_d, int *in_t, int 
 	neps = *in_neps;
 	epsm = sqr(*in_epsm);
 	epsM = sqr(*in_epsM);
+/**/
+/*
+INIT VARIABLES
+*/
 	blength = length -(m-1)*d;
 	lepsM = log(epsM);
 	a = log(epsm/epsM)/(double)(neps-1);
@@ -24,21 +41,21 @@ void d2(double *in_series, int *in_length, int *in_m, int *in_d, int *in_t, int 
 	for(i=0; i<m; i++) {
 		hist[i] = (double*) R_alloc(neps, sizeof(double));
 		for(j = 0; j<neps; j++)
-			output(i,j) = hist[i][j] = 0.0;
+			hist[i][j] = 0.0;
 	}
+	MATRIX2VEC(hist, out, m, neps);
+/**/
 
-	for(i = 0; i<(blength-t); i++) {
+	for(i = 0; i<(blength-t); i++) { /*for each point...*/
 		R_CheckUserInterrupt();
-		for(j=i+t; j<blength; j++) {
-			tmpd = 0.0;
-			for(w=0; w<m; w++) {
-				tmpd += sqr(series[i+w*d] - series[j+w*d]);
-				hist[w][MIN((long) ( (log(tmpd) - lepsM )/a ), neps-1 )] ++;
-			}
-		}
-	}
+		for(j=i+t; j<blength; j++) { /*for each upper-right point...*/
+			tmpd = 0.0; /*init distance to 0*/
+			for(w=0; w<m; w++) { /*for each dimension...*/
+				tmpd += sqr(series[i+w*d] - series[j+w*d]); /*update squared euclidean distance*/
+				hist[w][MIN((long) ( (log(tmpd) - lepsM )/a ), neps-1 )] ++; /*update histogram for current dimension*/
+			} /*end for each dimension*/
+		} /*end for each upper-right point*/
+	} /*end for each point*/
 
-	for(i=0; i<m; i++)
-		for(j = 0; j<neps; j++)
-			output(i,j) = hist[i][j];
+	MATRIX2VEC(hist, out, m, neps); /*copy result to output*/
 }

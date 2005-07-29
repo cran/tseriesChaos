@@ -22,8 +22,8 @@ Method of false nearest neighbours to help deciding the optimal embedding dimens
 Fraction of false neighbors (first row) and total number of neighbors (second row) for each specified embedding dimension (columns)
 }
 \examples{
-plot(false.nearest(rossler.ts, m=6, d=8, t=180, eps=1, rt=3)[1,],
-type="b", xlab="dimension", ylab="fraction of false nearests")
+(fn.out <- false.nearest(rossler.ts, m=6, d=8, t=180, eps=1, rt=3))
+plot(fn.out)
 }
 \references{
 Hegger, R., Kantz, H., Schreiber, T., Practical implementation of nonlinear time series methods: The TISEAN package; CHAOS 9, 413-435 (1999)

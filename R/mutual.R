@@ -1,4 +1,4 @@
-mutual <- function(series, partitions=16, lag.max=20) {
+mutual <- function(series, partitions=16, lag.max=20, plot=TRUE) {
 	series <- (series-min(series))/(diff(range(series)))
 	corr <- numeric(lag.max+1)
 	for(i in 0:lag.max) {
@@ -11,5 +11,12 @@ mutual <- function(series, partitions=16, lag.max=20) {
 		corr[i+1] <- sum(hist*log(hist)) - 2*sum(histx*log(histx))
 	}
 	names(corr) <- paste(0:lag.max)
-	corr
+	class(corr) <- "ami"
+	if(plot) plot.ami(corr)
+	invisible(corr)
+}
+
+plot.ami <- function(x, ...) {
+	plot(0:(length(x)-1), x, type="h", xlab="lag", ylab="AMI", main="Average Mutual Information")
+	abline(h=0)
 }

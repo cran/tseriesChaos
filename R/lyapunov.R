@@ -6,7 +6,7 @@ lyap_k <- function(series, m, d, t, k=1, ref, s, eps) {
 	trash <- numeric()
 	ref <- 1:ref
 	cat("Finding nearests\n")
-	nearest <- find_nearest(series, m=m, d=d, t=t, ref=length(ref), s=s, eps=eps, k=k)
+	nearest <- find_knearests(series, m=m, d=d, t=t, ref=length(ref), s=s, eps=eps, k=k)
 	trash <- apply(nearest, 1, function(x) any(is.na(x)))
 	ref <- ref[!trash]
 	if(length(ref)==0) stop("not enough neighbours found")

@@ -1,0 +1,7 @@
+0.1-2:
+More object orientation.
+Added comments to C code.
+
+0.1-1:
+Added efficient box-assisted neighbours searching to functions 'lyap_k' and 'false.nearest'.
+Cleaned C code.

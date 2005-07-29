@@ -1,7 +1,14 @@
 #include "tseriesChaos.h"
 
-#define output(i, j) out_hist[(i)*partitions + (j)]
+#define output(i, j) out_hist[INDEX(i, j, partitions)]
 
+/*Computes an 'auto' double histogram from a time series.
+in_series: time series (scaled between 0 and 1)
+in_length: time series length
+in_lag: time lag
+in_partitions: number of partitions to make
+out_hist: matrix containing the computed double histogram
+*/
 void mutual(double *in_series, int *in_length, int *in_lag, 
 int *in_partitions, double *out_hist) {
 	int partitions, length, lag;
