@@ -11,7 +11,6 @@ recurr <- function(series, m, d, end.time, eps, nt=10, ...) {
 	n <- length(series)-(m-1)*d
 	if(end.time>n)  end.time <- n
 	eps <- eps^2
-	xyz <- embedd(series, m=m, d=d)[1:end.time,]
 	plot(0, xlim=c(0, end.time), ylim=c(0, end.time), type="n", main="recurrence plot", xlab="i", ylab="j")
 	
 	for(i in seq(1, end.time, by=nt)) 

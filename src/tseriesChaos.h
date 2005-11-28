@@ -15,7 +15,7 @@ a: row number; b: col. number; nr: total number of rows*/
 #define INDEX(a, b, nr) ( (b)*(nr) + (a))
 
 /*Copy matrix 'mat' contents in vector 'vec'*/
-int MVCONV_i, MVCONV_j;
+extern int MVCONV_i, MVCONV_j;
 #define MATRIX2VEC(mat, vec, nr, nc) \
 	for(MVCONV_i=0; MVCONV_i<(nr); MVCONV_i++) \
 		for(MVCONV_j=0; MVCONV_j<(nc); MVCONV_j++) \
@@ -27,7 +27,7 @@ int MVCONV_i, MVCONV_j;
 		for(MVCONV_j=0; MVCONV_j<(nc); MVCONV_j++) \
 			(mat)[MVCONV_i][MVCONV_j] = (vec)[INDEX(MVCONV_i, MVCONV_j, (nr))];
 
-int DIST2_i;
+extern int DIST2_i;
 /*Squared euclidean distance between points 'a' and 'b',
 in the time delay embedding space of time series 'x', with time delay
 'd', embedding dimension*time-delay 'md'.
@@ -46,9 +46,16 @@ Result in 'out'.
 	for(DIST2_i=0; (DIST2_i<(md)) && ((out)<(eps)); DIST2_i+=(d)) \
 		(out)+=sqr(x[(a)+DIST2_i] - x[(b)+DIST2_i]);
 
+typedef struct {
+	double *series;
+	int m, d;
+	int blength;
+	double eps;
+	int **jh;
+	int *jpntr;
+} boxSearch;
 
-extern void fill_boxes(double *, int, int, int, double, int **, int *);
-extern void find_nearests(double *, int, int, int, int, int **, int *,
-	 int, double, int *, double *, int *);
+extern boxSearch init_boxSearch(double *, int, int, int, double);
+extern void find_nearests(boxSearch, int, int, int *, double *, int *);
 
 #endif

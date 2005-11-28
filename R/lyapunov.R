@@ -18,9 +18,10 @@ lyap_k <- function(series, m, d, t, k=1, ref, s, eps) {
 
 lyap <- function(dsts, start, end) {
 	dsts <- as.ts(dsts)
-	sf <- window(dsts,start,end)
-	start <- start(sf)[1]+(start(sf)[2]-1)/frequency(sf)
-	end <- end(sf)[1]+(end(sf)[2]-1)/frequency(sf)
-	lambda <- seq(start, end, by=1/frequency(dsts))
+	xtsp <- tsp(dsts)
+	seq(xtsp[1], xtsp[2], by = 1/xtsp[3])
+	sf <- window(dsts, start, end)
+	lambda <- tsp(sf)
+	lambda <- seq(lambda[1], lambda[2], by=1/lambda[3])
 	lm(sf~lambda, data=data.frame(sf = sf, lambda = lambda))$coeff
 }

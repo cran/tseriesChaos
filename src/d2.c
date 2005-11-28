@@ -1,7 +1,5 @@
 #include "tseriesChaos.h"
 
-#define output(i,j) out[(j)+(i)*neps]
-
 /*
 Sample correlation integral for multiple length scales and multiple embedding dimensions.
 in_series: input time series
@@ -43,7 +41,6 @@ INIT VARIABLES
 		for(j = 0; j<neps; j++)
 			hist[i][j] = 0.0;
 	}
-	MATRIX2VEC(hist, out, m, neps);
 /**/
 
 	for(i = 0; i<(blength-t); i++) { /*for each point...*/

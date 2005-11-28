@@ -15,12 +15,13 @@ void falseNearest(double *in_series, int *in_length, int *in_m, int *in_d, int *
 double eps, *series; 
 double dst;
 double *dsts;
-int *ids, *jpntr, **jh;
+int *ids;
 int m,d, t, length, blength;
 int num, denum;
 int i,j,md;
 double rt;
 int id;
+boxSearch bs;
 
 /*
 BIND PARAMETERS
@@ -41,15 +42,11 @@ INIT VARIABLES
 	num=denum=0;
 	ids = (int*) R_alloc(blength, sizeof(int));
 	dsts = (double*) R_alloc(blength, sizeof(double));
-	jpntr = (int*) R_alloc(blength, sizeof(int));
-	jh = (int**) R_alloc(BOX, sizeof(int*));
-	for(i=0; i<BOX; i++)
-		jh[i] = (int*) R_alloc(BOX, sizeof(int));
-	fill_boxes(series, m, d, blength, eps, jh, jpntr);
+	bs = init_boxSearch(series, m, d, blength, eps);
 /**/
 	
 	for(i = 0; i<blength; i++) { /*for each point...*/
-		find_nearests(series, m, d, t, i, jh, jpntr, blength, 	eps, ids, dsts, &id); /*fill list of neighbours*/
+		find_nearests(bs, t, i, ids, dsts, &id); /*fill list of neighbours*/
 		for(j=0; j<id; j++) { /*for each neighbour...*/
 			dst = sqr(dsts[j]); /*take (quadratic) distance*/
 			dst = (  dst + sqr(series[i+md] - series[ids[j]+md]) )/ dst; /*compute ratio*/

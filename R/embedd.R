@@ -1,7 +1,14 @@
-embedd <- function(x, m, d) {
-	checkEmbParms(x, m, d)
-	n <- length(x) - (m-1)*d
-	res <- matrix(0, n, m)
-	for(i in 1:m) res[,i] <- x[((i-1)*d+1):(n+(i-1)*d)]
+embedd <- function(x, m, d, lags) {
+	x <- as.ts(x)
+	if(missing(lags)) {
+		checkEmbParms(x, m, d)
+		lags <- ((1:m)-1)*d
+	}
+	res <- lag(x, lags[1])
+	for(i in 2:length(lags)) {
+		res <- ts.intersect(res, lag(x, lags[i]))
+	}
+	res <- matrix(res, nr = nrow(res), nc = ncol(res))
+	colnames(res) <- paste("lag", lags, sep="")
 	res
 }
