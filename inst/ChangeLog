@@ -1,3 +1,8 @@
+0.1-5:
+added plotting options to 'mutual'
+improved recurrence plot
+cleaned R code
+
 0.1-4:
 fixed 'tseriesChaos.h' global variables declaration (now as extern, and defined in 'misc.c')
 

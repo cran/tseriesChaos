@@ -1,3 +1,4 @@
+#Author: Antonio, Fabio Di Narzo. Last Modified $Date: 2005/12/02 16:15:39 $
 lyap_k <- function(series, m, d, t, k=1, ref, s, eps) {
 	checkEmbParms(series, m, d, t, s, ref)
 	series <- as.ts(series)

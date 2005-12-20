@@ -1,19 +1,10 @@
-recurr <- function(series, m, d, end.time, eps, nt=10, ...) {
-	w <- (0:(m-1))*d
-	dist <- function(i, j){
-		sum((series[i+w]-series[j+w])^2)
-	}
-
-	checkEmbParms(series, m, d)
-	if(eps <= 0) stop("eps must be positive")
-	nt <- as.integer(nt)
-	if(nt<=0) nt <- 1
-	n <- length(series)-(m-1)*d
-	if(end.time>n)  end.time <- n
-	eps <- eps^2
-	plot(0, xlim=c(0, end.time), ylim=c(0, end.time), type="n", main="recurrence plot", xlab="i", ylab="j")
-	
-	for(i in seq(1, end.time, by=nt)) 
-		for(j in seq(i,end.time, by=nt))
-			if(dist(i,j)<eps) points(c(i,j),c(j,i), ...)
+#Author: Antonio, Fabio Di Narzo. Last Modified $Date: 2005/12/02 21:11:34 $
+recurr <- function(series, m, d, start.time=start(series), end.time=end(series), ...) {
+	xyz <- embedd(window(series, start=start.time, end=end.time), m=m, d=d)
+	D <- dist(xyz)
+	D <- as.matrix(D) / max(D)
+	grid.x <- time(series)[1:nrow(D)]
+	filled.contour(grid.x, grid.x, D, 
+		color.palette = function(n) gray(0:(n-1)/(n-1)), 
+		xlab = "time", ylab = "time", main = "Recurrence plot", ...)
 }

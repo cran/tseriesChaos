@@ -1,3 +1,4 @@
+#Author: Antonio, Fabio Di Narzo. Last Modified $Date: 2005/12/02 16:15:39 $
 C2 <- function(series, m, d, t, eps){
 	checkEmbParms(series, m, d, t)
 	if(eps<=0) stop("eps must be positive")

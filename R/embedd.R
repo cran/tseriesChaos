@@ -1,3 +1,4 @@
+#Author: Antonio, Fabio Di Narzo. Last Modified $Date: 2005/12/02 16:15:39 $
 embedd <- function(x, m, d, lags) {
 	x <- as.ts(x)
 	if(missing(lags)) {

@@ -1,3 +1,4 @@
+#Author: Antonio, Fabio Di Narzo. Last Modified $Date: 2005/12/02 16:15:39 $
 d2 <- function(series, m, d, t, eps.min, neps=100) {
 	checkEmbParms(series, m, d, t)
 	if(eps.min<=0) stop("eps.min must be positive")

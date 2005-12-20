@@ -4,6 +4,9 @@
 \description{
 Plotting method for objects inheriting from class '"ami"'.
 }
+\synopsis{
+plot.ami(x, main=NULL, ...)
+}
 \usage{
 plot.ami(x, ...)
 }

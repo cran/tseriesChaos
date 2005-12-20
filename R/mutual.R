@@ -1,4 +1,5 @@
-mutual <- function(series, partitions=16, lag.max=20, plot=TRUE) {
+#Author: Antonio, Fabio Di Narzo. Last Modified $Date: 2005/12/18 15:27:24 $
+mutual <- function(series, partitions=16, lag.max=20, plot=TRUE, ...) {
 	series <- (series-min(series))/(diff(range(series)))
 	corr <- numeric(lag.max+1)
 	for(i in 0:lag.max) {
@@ -12,11 +13,12 @@ mutual <- function(series, partitions=16, lag.max=20, plot=TRUE) {
 	}
 	names(corr) <- paste(0:lag.max)
 	class(corr) <- "ami"
-	if(plot) plot.ami(corr)
+	if(plot) plot.ami(corr, ...)
 	invisible(corr)
 }
 
-plot.ami <- function(x, ...) {
-	plot(0:(length(x)-1), x, type="h", xlab="lag", ylab="AMI", main="Average Mutual Information")
+plot.ami <- function(x, main=NULL, ...) {
+	if(is.null(main)) main <- "Average Mutual Information"
+	plot(0:(length(x)-1), x, type="h", xlab="lag", ylab="AMI", main=main)
 	abline(h=0)
 }

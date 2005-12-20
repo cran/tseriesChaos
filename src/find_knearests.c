@@ -1,3 +1,4 @@
+/*Author: Antonio, Fabio Di Narzo. Last Modified $Date: 2005/12/02 16:09:44 $*/
 #include "tseriesChaos.h"
 
 #define output(a,b) out[INDEX(a, b, ref)]

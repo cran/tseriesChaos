@@ -1,3 +1,4 @@
+#Author: Antonio, Fabio Di Narzo. Last Modified $Date: 2005/12/02 16:15:39 $
 find_knearests <- function(series, m, d, t, eps, ref, k, s){
 	x <- ( series - min(series) ) / (diff(range(series)))
 	eps <- eps/diff(range(series))
