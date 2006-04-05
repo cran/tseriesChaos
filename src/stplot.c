@@ -1,4 +1,4 @@
-/*Author: Antonio, Fabio Di Narzo. Last Modified $Date: 2005/12/02 16:09:44 $*/
+/*Author: Antonio, Fabio Di Narzo. Last Modified $Date: 2005-12-02 17:09:44 +0100 (ven, 02 dic 2005) $*/
 #include "tseriesChaos.h"
 #define MEPS 1000
 #define MFRAC 10

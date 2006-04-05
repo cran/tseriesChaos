@@ -19,7 +19,7 @@ recurr(series, m, d, start.time=start(series), end.time=end(series), ...)
 Produces the recurrence plot, as proposed by Eckmann et al. (1987). 
 White is maximum distance, black is minimum.
 }
-\warning{
+\section{warning}{
 Be awared that number of distances to store goes as \code{n^2}, where \code{n = length(window(series, start=start.time, end=end.time))}!
 }
 \examples{

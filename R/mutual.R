@@ -1,4 +1,4 @@
-#Author: Antonio, Fabio Di Narzo. Last Modified $Date: 2005/12/18 15:27:24 $
+#Author: Antonio, Fabio Di Narzo. Last Modified $Date: 2005-12-18 16:27:25 +0100 (dom, 18 dic 2005) $
 mutual <- function(series, partitions=16, lag.max=20, plot=TRUE, ...) {
 	series <- (series-min(series))/(diff(range(series)))
 	corr <- numeric(lag.max+1)
