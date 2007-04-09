@@ -24,5 +24,5 @@ print.false.nearest <- function(x, ...) {
 plot.false.nearest <- function(x, ...) {
 	y <- x[1, !is.na(x[2,])]*100
 	x <- (1:ncol(x))[!is.na(x[2,])]
-	plot(x, y, type="b", main="False nearest neighbours", xlab="embedding dimension", ylab="\% of false nearest neighbours", ylim=c(0,100))
+	plot(x, y, type="b", main="False nearest neighbours", xlab="embedding dimension", ylab="% of false nearest neighbours", ylim=c(0,100))
 }
