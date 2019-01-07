@@ -27,7 +27,8 @@ Uses \code{lsoda} in \code{odesolve} for numerical integration of the system.
 The time series of the observed function of the system's state
 }
 \examples{
-rossler.ts <- sim.cont(rossler.syst, start=0, end=650, dt=0.1, start.x=c(0,0,0), parms=c(0.15, 0.2, 10))
+rossler.ts <- sim.cont(rossler.syst, start=0, end=650, dt=0.1,
+                       start.x=c(0,0,0), parms=c(0.15, 0.2, 10))
 }
 
 \author{Antonio, Fabio Di Narzo}

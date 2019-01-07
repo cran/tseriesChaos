@@ -1,5 +1,5 @@
-787742f722d25e698abe7b066fdfbd30 *DESCRIPTION
-2b1ffe980f1c261c0eb936f3cf657b83 *NAMESPACE
+d2e25c53c53f7a66cbb02d9256a11165 *DESCRIPTION
+83cb6196931700275bb8b422daa9efe1 *NAMESPACE
 f905ca57542b079fe564478457349536 *R/C2.R
 4e81503ba2cfcf39c76ade6deb1ef1bc *R/checkEmbParms.R
 137cd4d00719e055acc8260877e32039 *R/d2.R
@@ -15,8 +15,8 @@ f905ca57542b079fe564478457349536 *R/C2.R
 ff882daff29f5834816ce25992db439e *R/rossler.syst.R
 efebc8fe9f3df5ed32199472b52fee14 *R/sim.cont.R
 7ac00725da7234eeaa889fceb191d98e *R/stplot.R
-9091ba1f25cd5890b16165350ad9a2a6 *data/lorenz.ts.RData
-ba3abd99af33a0fc1f1cfa735f68ec21 *data/rossler.ts.RData
+ea65c6332237f93ccd03a765ad8dea4f *data/lorenz.ts.RData
+d05e3ffece3ded54b00b1731001381a6 *data/rossler.ts.RData
 10f099a4a55143342e90beea01348aca *inst/ChangeLog
 977db9532d4bd630fca587be23e578fe *man/C2.Rd
 68f5ab4f0c6a04a0410737873c3257e9 *man/Lyapunov.Rd
@@ -35,7 +35,7 @@ a80e4bcade07ef9529a9ba6ee0f6bcac *man/print.d2.Rd
 0fe4897c18e2c66306572faffe2fdfdb *man/recurr.Rd
 c6bd465779947c49ecde704fba6736b0 *man/rossler.syst.Rd
 299778fc0ac9501b9d46b7837bab99fd *man/rossler.ts.Rd
-e7d88b78c3bf82e60298c9ca4b98add0 *man/sim.cont.Rd
+fe603d1b278f0dae3ab1061ea7fa4f6d *man/sim.cont.Rd
 60ceaa46a53efbc1581ff94759eefc6e *man/stplot.Rd
 17e57e1bd9dde3e995a10d7da5821209 *man/tseriesChaos-internal.Rd
 336142d3bad8c5ffabeaacbc6350910b *src/C2.c
